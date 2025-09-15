@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <script>
+        function table(num){
+            for (var i = 1; i <= 10; i++) {
+                var result = num * i;
+                var type = (result % 2 === 0) ? "EVEN" : "ODD";
+                document.write( result + " -> "+ type + "<br>");
+            }
+            document.write("<br>"); 
+        }
+
+        table(15);
+        table(19);
+    </script>
+</body>
+</html>

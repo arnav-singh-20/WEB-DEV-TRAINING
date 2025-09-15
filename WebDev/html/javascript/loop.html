@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <script>
+        function table(num) {
+            let evens = [];
+            let odds = [];
+
+            for (let i = 1; i <= 10; i++) {
+                let result = num * i;
+                if (result % 2 === 0) {
+                    evens.push(result);
+                } else {
+                    odds.push(result);
+                }
+            }
+
+            document.write("<b>Table of " + num + "</b> <br>");
+            document.write("Even: " + evens.join(", ") + "<br>");
+            document.write("Odd: " + odds.join(", ") + "<br><br>");
+        }
+
+        table(15);
+        table(19);
+    </script>
+</body>
+</html>
