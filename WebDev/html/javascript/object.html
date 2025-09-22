@@ -8,12 +8,15 @@
 <body>
     <p id="class"></p>
     <script>
-        const toy={
-            toy1:"car",
-            toy2:"apple",
-            toy3:"elephant"
+        class Car{
+            constructor(name,year){
+                this.name=name;
+                this.year=year;
+            }
         }
-        document.getElementById('class').innerHTML=toy.toy3
+        const mycar1=new Car("audi",2005);
+        const mycar2=new Car("BMW",2005);
+        document.getElementById('class').innerHTML=mycar1.name + " "  + mycar1.year;
     </script>
 </body>
 </html>
