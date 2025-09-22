@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Info</title>
+    <style>
+        body {
+            display: flex;
+            background-color: rgba(254, 0, 0, 0.528);
+            justify-content: center;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            background-color: antiquewhite;
+            border-radius: 10px;
+            padding: 20px;
+            gap: 20px;
+            width: 350px;
+        }
+        .card {
+            background-color: rgba(144, 0, 255, 0.484);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        .student {
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="cards-container">
+        <!-- Cards will be injected here --><b>INFORMATION OF STUDENTS</b>
+    </div>
+
+    <script>
+        const students = [
+            { first_name: "Arnav", last_name: "Singh", age: 20, branch: "CS" },
+            { first_name: "Samriddhi", last_name: "Bisht", age: 20, branch: "CSE-AIML" },
+            { first_name: "Sakshi", last_name: "Siwal", age: 20, branch: "CSE" },
+            { first_name: "Yash", last_name: "Tyagi", age: 21, branch: "ELCE" },
+            { first_name: "Mukul", last_name: "Chaudhary", age: 20, branch: "CSE" }
+        ];
+        const grouped = {};
+        students.forEach(s => {
+            if (!grouped[s.branch]) {
+                grouped[s.branch] = [];
+            }
+            grouped[s.branch].push(s);
+        });
+
+        const container = document.getElementById("cards-container");
+
+        for (let branch in grouped) {
+            let card = document.createElement("div");
+            card.className = "card";
+
+            let content = `<h3>Branch: ${branch}</h3>`;
+            grouped[branch].forEach(s => {
+                content += `
+                    <div class="student">
+                        ${s.first_name} ${s.last_name}, Age: ${s.age}
+                    </div>
+                `;
+            });
+
+            card.innerHTML = content;
+            container.appendChild(card);
+        }
+    </script>
+</body>
+</html>
