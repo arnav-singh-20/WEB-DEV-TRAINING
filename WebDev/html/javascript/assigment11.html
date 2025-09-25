@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: rgb(146, 176, 234);}
+    label { display: block; margin: 8px 0 4px;}
+    input { padding: 6px; width: 300px; background-color: bisque; }
+    button { margin-top: 15px; padding: 10px 20px; cursor: pointer; color: black; }
+    .resume { 
+      margin-top: 40px; 
+      padding: 20px; 
+      border: 2px solid #ccc; 
+      border-radius: 8px; 
+      max-width: 500px; 
+    }
+    .heading { 
+      display: flex; 
+      align-items: center; 
+      gap: 20px; 
+    }
+    .heading img { 
+      width: 100px; 
+      height: 100px; 
+      border-radius: 50%; 
+      object-fit: cover; 
+    }
+    .heading h1 {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-section">
+    <label>Name:</label>
+    <input type="text" id="inputName">
+
+    <label>Education:</label>
+    <input type="text" id="inputEducation">
+
+    <label>Skill 1:</label>
+    <input type="text" id="inputSkill1">
+
+    <label>Skill 2:</label>
+    <input type="text" id="inputSkill2">
+
+    <label>Skill 3:</label>
+    <input type="text" id="inputSkill3">
+
+    <label>Address:</label>
+    <input type="text" id="inputAddress">
+
+    <button onclick="generateResume()">Generate Resume</button>
+  </div>
+  <div id="resume"></div>
+
+  <script>
+    function generateResume() {
+      const name = document.getElementById("inputName").value;
+      const education = document.getElementById("inputEducation").value;
+      const skill1 = document.getElementById("inputSkill1").value;
+      const skill2 = document.getElementById("inputSkill2").value;
+      const skill3 = document.getElementById("inputSkill3").value;
+      const address = document.getElementById("inputAddress").value;
+
+      document.getElementById("resume").innerHTML = `
+        <div class="resume">
+          <div class="heading">
+            <img src="Profile.jpeg" alt="Profile Picture">
+            <h1>${name}</h1>
+          </div>
+          <div class="education">
+            <p><strong>Education</strong></p>
+            <p>${education}</p>
+          </div>
+          <div class="skill">
+            <p><strong>Skills</strong></p>
+            <ul>
+              <li>${skill1}</li>
+              <li>${skill2}</li>
+              <li>${skill3}</li>
+            </ul>
+          </div>
+          <div class="address">
+            <p><strong>Address</strong></p>
+            <p>${address}</p>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
