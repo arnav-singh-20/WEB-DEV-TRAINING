@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+        body { 
+          font-family: Arial, sans-serif; 
+          margin: 20px; 
+          background-color: rgb(146, 176, 234);
+        }
+   </style>
+</head>
+<body>
+    <h2>To-Do List</h2>
+
+    <div id="taskContainer">
+      <input type="text" placeholder="Enter task">
+      <button onclick="addTaskBox()">+</button>
+    </div>
+
+    <br>
+    <button onclick="generateList()">Create List</button>
+
+    <ul id="todoList"></ul>
+
+    <script>
+      function addTaskBox() {
+        document.getElementById("taskContainer").insertAdjacentHTML(
+          "beforeend",
+          '<br><input type="text" placeholder="Enter task"> <button onclick="addTaskBox()">+</button>'
+        );
+      }
+
+      function escapeHtml(text) {
+        const map = { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' };
+        return text.replace(/[&<>"']/g, m => map[m]);
+      }
+
+      function generateList() {
+        const inputs = document.querySelectorAll("#taskContainer input");
+        let list = "";
+
+        for (const input of inputs) {
+          const val = input.value.trim();
+          if (val !== "") {
+            list += "<li>" + escapeHtml(val) + "</li>";
+          }
+        }
+
+        document.getElementById("todoList").innerHTML = list;
+      }
+    </script>
+</body>
+</html>
